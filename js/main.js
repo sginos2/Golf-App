@@ -1,3 +1,13 @@
+document.getElementById('course-select').addEventListener('change', function(event) {
+  let courseId = event.target.value;
+  getCourseInfo(courseId);
+});
+
+// document.getElementById('tee-box-select').addEventListener('change', function(event) {
+//   let courseHoles = event.target.value;
+//   getTeeBoxInfo(courseHoles);
+// });
+
 const getCoursesPromise = fetch("https://golf-courses-api.herokuapp.com/courses", {
   method: "GET",
   headers: {
@@ -15,19 +25,43 @@ courseDataPromise.then(data => {
   data.courses.forEach(course => {
     courseOptionsHtml += `<option value="${course.id}">${course.name}</option>`;
   });
+  getCourseInfo(data.courses[0].id);
   document.getElementById('course-select').innerHTML = courseOptionsHtml;
 });
 
-courseDataPromise.then(data => {
-  let teeBoxSelectHtml = ''
-  data.teeBoxes.forEach(function (teeBox, index) {
-    teeBoxSelectHtml += `<option value="${index}">${teeBox.teeType.toUpperCase()}, ${teeBox.totalYards} yards</option>`
+function getCourseInfo(courseId) {
+  const getCourseInfoPromise = fetch(`https://golf-courses-api.herokuapp.com/courses/${courseId}`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
-  document.getElementById('tee-box-select').innerHTML = teeBoxSelectHtml;
-})/
-
-function print() {
-  //when course and teebox are selected, print all the info for that course
-  //print par, yardage, and handicap info
-  //print names entered in and print scores when entered
+  const courseInfoPromise = getCourseInfoPromise.then((response) => {
+    return response.json();
+  });
+  courseInfoPromise.then(course => {
+    let teeBoxSelectHtml = '';
+    course.data.holes[0].teeBoxes.forEach(function (teeBox, index) {
+      if (teeBox.teeType.toUpperCase() !== "AUTO CHANGE LOCATION") {
+        teeBoxSelectHtml += `<option value="${index}">${teeBox.teeType.toUpperCase()}</option>`;
+      }
+    });
+    document.getElementById('tee-box-select').innerHTML = teeBoxSelectHtml;
+  });
 }
+
+// function getTeeBoxInfo(courseHoles) {
+//     const getTeeBoxInfoPromise = fetch(`https://golf-courses-api.herokuapp.com/courses/${courseHoles}`, {
+//       method: "GET",
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     });
+//     const teeBoxInfoPromise = getTeeBoxInfoPromise.then((response) => {
+//       return response.json();
+//     });
+//     teeBoxInfoPromise.then(holes => {
+//       let teeBoxInfoHtml = '';
+//       holes.teeBoxes.teeType.forEach()
+//     })
+// }
