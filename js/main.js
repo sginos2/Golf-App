@@ -62,6 +62,6 @@ function getCourseInfo(courseId) {
 //     });
 //     teeBoxInfoPromise.then(holes => {
 //       let teeBoxInfoHtml = '';
-//       holes.teeBoxes.teeType.forEach()
+//       holes.teeBoxes.teeType.forEach(function(teeType))
 //     })
 // }
