@@ -4,5 +4,4 @@ class Player {
         this.id = id;
         this.scores = scores;
       }
-   
 }

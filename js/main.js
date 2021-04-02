@@ -3,6 +3,12 @@ document.getElementById('course-select').addEventListener('change', function(eve
   getCourseInfo(courseId);
 });
 
+// document.getElementById('player').addEventListener('keydown', (event) => {
+//   if (event.key == 'Enter') {
+//       addNewPlayer();
+//   }
+// });
+
 // document.getElementById('tee-box-select').addEventListener('change', function(event) {
 //   let courseHoles = event.target.value;
 //   getTeeBoxInfo(courseHoles);
@@ -64,4 +70,12 @@ function getCourseInfo(courseId) {
 //       let teeBoxInfoHtml = '';
 //       holes.teeBoxes.teeType.forEach(function(teeType))
 //     })
+// }
+
+// function addNewPlayer() {
+//     const text = document.getElementById('player').value;
+//     if (text) {
+//         const newPlayer = new Player(text);
+//         document.getElementById('player').value = '';
+//     };
 // }
