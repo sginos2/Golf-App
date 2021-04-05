@@ -8,79 +8,227 @@
     </head>
     <body>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12" id="header">
+          <div class="row">
+            <div class="col-lg-12" id="header"></div>
+          </div>
+          <div class="row" id="teeBoxRow">
+            <div class="col-lg-12">
+                <div id="options-container">
+                    <div class="form-group">
+                        <label for="course-select">Select Course</label>
+                        <select class="form-control" id="course-select"></select>
+                    </div>                          
+                    <div class="form-group">
+                        <label for="tee-box-select">Select Tee Box</label>
+                        <select class="form-control" id="tee-box-select"></select>
+                    </div>                          
                 </div>
             </div>
-            <div class="row" id="teeBoxRow">
-                <div class="col-lg-12">
-                    <div id="options-container">
-                        <div class="form-group">
-                            <label for="course-select">Select Course</label>
-                            <select class="form-control" id="course-select"></select>
-                        </div>                          
-                        <div class="form-group">
-                            <label for="tee-box-select">Select Tee Box</label>
-                            <select class="form-control" id="tee-box-select"></select>
-                        </div>                          
-                    </div>
-                </div>
+          </div>
+          <div class="row" id="scorecard-container">
+            <div class="col-lg-12" id="scorecard">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr id="hole">
+                        <th scope="col">Hole</th>
+                        <th scope="col">1</th>
+                        <th scope="col">2</th>
+                        <th scope="col">3</th>
+                        <th scope="col">4</th>
+                        <th scope="col">5</th>
+                        <th scope="col">6</th>
+                        <th scope="col">7</th>
+                        <th scope="col">8</th>
+                        <th scope="col">9</th>
+                        <th scope="col">Out</th>
+                        <th scope="col">10</th>
+                        <th scope="col">11</th>
+                        <th scope="col">12</th>
+                        <th scope="col">13</th>
+                        <th scope="col">14</th>
+                        <th scope="col">15</th>
+                        <th scope="col">16</th>
+                        <th scope="col">17</th>
+                        <th scope="col">18</th>
+                        <th scope="col">In</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="yardageRow">
+                        <th scope="row">Yardage</th>
+                        <th scope="col" id="yard1"></th>
+                        <th scope="col" id="yard2"></th>
+                        <th scope="col" id="yard3"></th>
+                        <th scope="col" id="yard4"></th>
+                        <th scope="col" id="yard5"></th>
+                        <th scope="col" id="yard6"></th>
+                        <th scope="col" id="yard7"></th>
+                        <th scope="col" id="yard8"></th>
+                        <th scope="col" id="yard9"></th>
+                        <th scope="col"></th>
+                        <th scope="col" id="yard10"></th>
+                        <th scope="col" id="yard11"></th>
+                        <th scope="col" id="yard12"></th>
+                        <th scope="col" id="yard13"></th>
+                        <th scope="col" id="yard14"></th>
+                        <th scope="col" id="yard15"></th>
+                        <th scope="col" id="yard16"></th>
+                        <th scope="col" id="yard17"></th>
+                        <th scope="col" id="yard18"></th>
+                        <th scope="col"></th>
+                        <th scope="col" id="yardtotal"></th>
+                      </tr>
+                      <tr id="parRow">
+                        <th scope="row">Par</th>
+                        <th scope="col" id="par1"></th>
+                        <th scope="col" id="par2"></th>
+                        <th scope="col" id="par3"></th>
+                        <th scope="col" id="par4"></th>
+                        <th scope="col" id="par5"></th>
+                        <th scope="col" id="par6"></th>
+                        <th scope="col" id="par7"></th>
+                        <th scope="col" id="par8"></th>
+                        <th scope="col" id="par9"></th>
+                        <th scope="col"></th>
+                        <th scope="col" id="par10"></th>
+                        <th scope="col" id="par11"></th>
+                        <th scope="col" id="par12"></th>
+                        <th scope="col" id="par13"></th>
+                        <th scope="col" id="par14"></th>
+                        <th scope="col" id="par15"></th>
+                        <th scope="col" id="par16"></th>
+                        <th scope="col" id="par17"></th>
+                        <th scope="col" id="par18"></th>
+                        <th scope="col"></th>
+                        <th scope="col" id="total"></th>
+                      </tr>
+                      <tr id="handicapRow">
+                        <th scope="row">Handicap</th>
+                        <th scope="col" id="handicap1"></th>
+                        <th scope="col" id="handicap2"></th>
+                        <th scope="col" id="handicap3"></th>
+                        <th scope="col" id="handicap4"></th>
+                        <th scope="col" id="handicap5"></th>
+                        <th scope="col" id="handicap6"></th>
+                        <th scope="col" id="handicap7"></th>
+                        <th scope="col" id="handicap8"></th>
+                        <th scope="col" id="handicap9"></th>
+                        <th scope="col"></th>
+                        <th scope="col" id="handicap10"></th>
+                        <th scope="col" id="handicap11"></th>
+                        <th scope="col" id="handicap12"></th>
+                        <th scope="col" id="handicap13"></th>
+                        <th scope="col" id="handicap14"></th>
+                        <th scope="col" id="handicap15"></th>
+                        <th scope="col" id="handicap16"></th>
+                        <th scope="col" id="handicap17"></th>
+                        <th scope="col" id="handicap18"></th>
+                        <th scope="col"></th>
+                        <th scope="col" id="total"></th>
+                      </tr>
+                      <tr id="playerRow">
+                        <th scope="row"><input type="text" placeholder="Player 1"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                      <tr id="player">
+                        <th scope="row"><input type="text" placeholder="Player 2"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                      <tr id="player">
+                        <th scope="row"><input type="text" placeholder="Player 3"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                      <tr id="player">
+                        <th scope="row"><input type="text" placeholder="Player 4"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="row" id="scorecard-container">
-                <div class="col-lg-12" id="scorecard">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Hole</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">1</th>
-                                    <th scope="col">2</th>
-                                    <th scope="col">3</th>
-                                    <th scope="col">4</th>
-                                    <th scope="col">5</th>
-                                    <th scope="col">6</th>
-                                    <th scope="col">7</th>
-                                    <th scope="col">8</th>
-                                    <th scope="col">9</th>
-                                    <th scope="col">10</th>
-                                    <th scope="col">11</th>
-                                    <th scope="col">12</th>
-                                    <th scope="col">13</th>
-                                    <th scope="col">14</th>
-                                    <th scope="col">15</th>
-                                    <th scope="col">16</th>
-                                    <th scope="col">17</th>
-                                    <th scope="col">18</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr id="yardage">
-                                    <th scope="row">Yardage</th>
-                                  </tr>
-                                  <tr id="par">
-                                    <th scope="row">Par</th>
-                                  </tr>
-                                  <tr id="handicap">
-                                    <th scope="row">Handicap</th>
-                                  </tr>
-                                  <tr id="player">
-                                    <th scope="row"><input type="text" placeholder="Player 1"></th>
-                                  </tr>
-                                  <tr id="player">
-                                    <th scope="row"><input type="text" placeholder="Player 2"></th>
-                                  </tr>
-                                  <tr id="player">
-                                    <th scope="row"><input type="text" placeholder="Player 3"></th>
-                                  </tr>
-                                  <tr id="player">
-                                    <th scope="row"><input type="text" placeholder="Player 4"></th>
-                                  </tr>
-                                </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         <script src="./js/utils.js"></script>

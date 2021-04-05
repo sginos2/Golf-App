@@ -1,18 +1,16 @@
+let courseData;
+let players = {};
+
 document.getElementById('course-select').addEventListener('change', function(event) {
   let courseId = event.target.value;
+  console.log(event.target);
   getCourseInfo(courseId);
 });
 
-// document.getElementById('player').addEventListener('keydown', (event) => {
-//   if (event.key == 'Enter') {
-//       addNewPlayer();
-//   }
-// });
-
-// document.getElementById('tee-box-select').addEventListener('change', function(event) {
-//   let courseHoles = event.target.value;
-//   getTeeBoxInfo(courseHoles);
-// });
+document.getElementById('tee-box-select').addEventListener('change', function(event) {
+  let teeBox = event.target.value;
+  getTeeBoxInfo(teeBox);
+});
 
 const getCoursesPromise = fetch("https://golf-courses-api.herokuapp.com/courses", {
   method: "GET",
@@ -46,6 +44,7 @@ function getCourseInfo(courseId) {
     return response.json();
   });
   courseInfoPromise.then(course => {
+    courseData = course;
     let teeBoxSelectHtml = '';
     course.data.holes[0].teeBoxes.forEach(function (teeBox, index) {
       if (teeBox.teeType.toUpperCase() !== "AUTO CHANGE LOCATION") {
@@ -56,26 +55,11 @@ function getCourseInfo(courseId) {
   });
 }
 
-// function getTeeBoxInfo(courseHoles) {
-//     const getTeeBoxInfoPromise = fetch(`https://golf-courses-api.herokuapp.com/courses/${courseHoles}`, {
-//       method: "GET",
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-//     const teeBoxInfoPromise = getTeeBoxInfoPromise.then((response) => {
-//       return response.json();
-//     });
-//     teeBoxInfoPromise.then(holes => {
-//       let teeBoxInfoHtml = '';
-//       holes.teeBoxes.teeType.forEach(function(teeType))
-//     })
-// }
-
-// function addNewPlayer() {
-//     const text = document.getElementById('player').value;
-//     if (text) {
-//         const newPlayer = new Player(text);
-//         document.getElementById('player').value = '';
-//     };
-// }
+function getTeeBoxInfo(teeBox) {
+  console.log(courseData);
+  courseData.data.holes.forEach((hole, index) => {
+    document.getElementById('yard' + (index + 1)).innerText = hole.teeBoxes[teeBox].yards;
+    document.getElementById('par' + (index + 1)).innerText = hole.teeBoxes[teeBox].par;
+    document.getElementById('handicap' + (index + 1)).innerText = hole.teeBoxes[teeBox].hcp;
+  });
+}
