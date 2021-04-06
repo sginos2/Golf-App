@@ -16,25 +16,25 @@ document.getElementById('player1').addEventListener('keydown', event => {
   if (event.key == 'Enter') {
     addNewPlayer('player1');
   }
-})
+});
 
 document.getElementById('player2').addEventListener('keydown', event => {
   if (event.key == 'Enter') {
     addNewPlayer('player2');
   }
-})
+});
 
 document.getElementById('player3').addEventListener('keydown', event => {
   if (event.key == 'Enter') {
     addNewPlayer('player3');
   }
-})
+});
 
 document.getElementById('player4').addEventListener('keydown', event => {
   if (event.key == 'Enter') {
     addNewPlayer('player4');
   }
-})
+});
 
 /*printScores(){
   let sum = 0;
@@ -91,11 +91,17 @@ function getCourseInfo(courseId) {
 
 function getTeeBoxInfo(teeBox) {
   console.log(courseData);
+  let totalYards = 0;
+  let totalPar = 0;
   courseData.data.holes.forEach((hole, index) => {
+    totalYards += hole.teeBoxes[teeBox].yards
+    totalPar += hole.teeBoxes[teeBox].par;
     document.getElementById('yard' + (index + 1)).innerText = hole.teeBoxes[teeBox].yards;
     document.getElementById('par' + (index + 1)).innerText = hole.teeBoxes[teeBox].par;
     document.getElementById('handicap' + (index + 1)).innerText = hole.teeBoxes[teeBox].hcp;
   });
+  document.getElementById('yardtotal').innerText = totalYards;
+  document.getElementById('partotal').innerText = totalPar;
 }
 
 function addNewPlayer(playerId) {
