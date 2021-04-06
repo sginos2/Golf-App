@@ -1,3 +1,7 @@
 #teeBoxRow {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+}
+
+.score-input {
+    width: 30px;
 }
