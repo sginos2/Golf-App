@@ -17,34 +17,21 @@ document.getElementById('player1').addEventListener('keydown', event => {
     addNewPlayer('player1');
   }
 });
-
 document.getElementById('player2').addEventListener('keydown', event => {
   if (event.key == 'Enter') {
     addNewPlayer('player2');
   }
 });
-
 document.getElementById('player3').addEventListener('keydown', event => {
   if (event.key == 'Enter') {
     addNewPlayer('player3');
   }
 });
-
 document.getElementById('player4').addEventListener('keydown', event => {
   if (event.key == 'Enter') {
     addNewPlayer('player4');
   }
 });
-
-/*printScores(){
-  let sum = 0;
-  for (let i = 0; i < scores.length; i++) {
-    sum += scores[i];
-  }
-  //put the value of sum in the 'total' column
-  //if players.player[playerId].scores.length =
-}
-*/
 
 const getCoursesPromise = fetch("https://golf-courses-api.herokuapp.com/courses", {
   method: "GET",
@@ -100,26 +87,45 @@ function getTeeBoxInfo(teeBox) {
     document.getElementById('par' + (index + 1)).innerText = hole.teeBoxes[teeBox].par;
     document.getElementById('handicap' + (index + 1)).innerText = hole.teeBoxes[teeBox].hcp;
   });
-  document.getElementById('yardtotal').innerText = totalYards;
-  document.getElementById('partotal').innerText = totalPar;
+  document.getElementById('yard-total').innerText = totalYards;
+  document.getElementById('par-total').innerText = totalPar;
 }
 
 function addNewPlayer(playerId) {
   const playerName = document.getElementById(playerId).value;
   if (playerName) {
-    const newPlayer = new Player(playerName);
-    players.push(newPlayer);
-    document.getElementById(playerId).classList.add('form-control-plaintext');
-    document.getElementById(playerId).readOnly = true;
+    if (players.some(p => p.name === playerName)) {
+      alert("Name is already taken. Please choose another name.");
+    }
+    else {
+      const newPlayer = new Player(playerName, playerId);
+      players.push(newPlayer);
+      document.getElementById(playerId).classList.add('form-control-plaintext');
+      document.getElementById(playerId).readOnly = true;
+    }
   }
 }
 
-// function inputScore(playerId) {
-//   const playerScore = document.getElementById('p1score1').value;
-//   if (playerScore) {
-//     players.player[playerId].scores.push(playerScore);
-//     document.getElementById('p1score1').classList.add('form-control-plaintext');
-//     document.getElementById('p1scores1').readOnly = true;
-//     printScores();
-//   }
-// }
+function inputScore(playerId, elementId, totalId, isOut, outInId) {
+  const playerScore = document.getElementById(elementId).value;
+  if (playerScore) {
+    console.log(players);
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].id === playerId) {
+        if(isOut)
+        {
+          players[i].outTotal += parseInt(playerScore);
+          document.getElementById(outInId).innerText = players[i].outTotal;
+        }
+        else{
+          players[i].inTotal += parseInt(playerScore);
+          document.getElementById(outInId).innerText = players[i].inTotal;
+        }
+        players[i].score += parseInt(playerScore);
+        document.getElementById(totalId).innerText = players[i].score;
+      }
+    }
+    document.getElementById(elementId).classList.add('form-control-plaintext');
+    document.getElementById(elementId).readOnly = true;
+  }
+}

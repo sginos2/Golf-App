@@ -1,7 +1,9 @@
 class Player {
-  constructor(name, id = Utils.getNewId('player-'), scores = []) {
+  constructor(name, id, score = 0, outTotal = 0, inTotal = 0) {
     this.name = name;
     this.id = id;
-    this.scores = scores;
+    this.score = score;
+    this.outTotal = outTotal;
+    this.inTotal = inTotal;
   }
 }
