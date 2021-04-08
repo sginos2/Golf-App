@@ -149,7 +149,7 @@
                         <th scope="col"><input type="number" id="p1score15" class="score-input" onchange="inputScore('player1', 'p1score15', 'p1total', false, 'p1in')"></th>
                         <th scope="col"><input type="number" id="p1score16" class="score-input" onchange="inputScore('player1', 'p1score16', 'p1total', false, 'p1in')"></th>
                         <th scope="col"><input type="number" id="p1score17" class="score-input" onchange="inputScore('player1', 'p1score17', 'p1total', false, 'p1in')"></th>
-                        <th scope="col"><input type="number" id="p1score18" class="score-input" onchange="inputScore('player1', 'p1score18', 'p1total', false, 'p1in')"></th>
+                        <th scope="col"><input type="number" id="p1score18" class="score-input" onchange="inputScore('player1', 'p1score18', 'p1total', false, 'p1in'); toast('player1')"></th>
                         <th scope="col" id="p1in"></th>
                         <th scope="col" id="p1total"></th>
                       </tr>
@@ -173,7 +173,7 @@
                         <th scope="col"><input type="number" id="p2score15" class="score-input" onchange="inputScore('player2', 'p2score15', 'p2total', false, 'p2in')"></th>
                         <th scope="col"><input type="number" id="p2score16" class="score-input" onchange="inputScore('player2', 'p2score16', 'p2total', false, 'p2in')"></th>
                         <th scope="col"><input type="number" id="p2score17" class="score-input" onchange="inputScore('player2', 'p2score17', 'p2total', false, 'p2in')"></th>
-                        <th scope="col"><input type="number" id="p2score18" class="score-input" onchange="inputScore('player2', 'p2score18', 'p2total', false, 'p2in')"></th>
+                        <th scope="col"><input type="number" id="p2score18" class="score-input" onchange="inputScore('player2', 'p2score18', 'p2total', false, 'p2in'); toast('player2')"></th>
                         <th scope="col" id="p2in"></th>
                         <th scope="col" id="p2total"></th>
                       </tr>
@@ -197,7 +197,7 @@
                         <th scope="col"><input type="number" id="p3score15" class="score-input" onchange="inputScore('player3', 'p3score15', 'p3total', false, 'p3in')"></th>
                         <th scope="col"><input type="number" id="p3score16" class="score-input" onchange="inputScore('player3', 'p3score16', 'p3total', false, 'p3in')"></th>
                         <th scope="col"><input type="number" id="p3score17" class="score-input" onchange="inputScore('player3', 'p3score17', 'p3total', false, 'p3in')"></th>
-                        <th scope="col"><input type="number" id="p3score18" class="score-input" onchange="inputScore('player3', 'p3score18', 'p3total', false, 'p3in')"></th>
+                        <th scope="col"><input type="number" id="p3score18" class="score-input" onchange="inputScore('player3', 'p3score18', 'p3total', false, 'p3in'); toast('player3')"></th>
                         <th scope="col" id="p3in"></th>
                         <th scope="col" id="p3total"></th>
                       </tr>
@@ -221,7 +221,7 @@
                         <th scope="col"><input type="text" id="p4score15" class="score-input" onchange="inputScore('player4', 'p4score15', 'p4total', false, 'p4in')"></th>
                         <th scope="col"><input type="text" id="p4score16" class="score-input" onchange="inputScore('player4', 'p4score16', 'p4total', false, 'p4in')"></th>
                         <th scope="col"><input type="text" id="p4score17" class="score-input" onchange="inputScore('player4', 'p4score17', 'p4total', false, 'p4in')"></th>
-                        <th scope="col"><input type="text" id="p4score18" class="score-input" onchange="inputScore('player4', 'p4score18', 'p4total', false, 'p4in')"></th>
+                        <th scope="col"><input type="text" id="p4score18" class="score-input" onchange="inputScore('player4', 'p4score18', 'p4total', false, 'p4in'); toast('player4')"></th>
                         <th scope="col" id="p4in"></th>
                         <th scope="col" id="p4total"></th>
                       </tr>
@@ -229,6 +229,7 @@
                   </thead>
                 </table>
               </div>
+              <div id="snackbar"></div>
             </div>
           </div>
         </div>

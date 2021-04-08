@@ -1,5 +1,6 @@
 let courseData;
 let players = [];
+let totalPar = 0;
 
 document.getElementById('course-select').addEventListener('change', function(event) {
   let courseId = event.target.value;
@@ -79,7 +80,6 @@ function getCourseInfo(courseId) {
 function getTeeBoxInfo(teeBox) {
   console.log(courseData);
   let totalYards = 0;
-  let totalPar = 0;
   courseData.data.holes.forEach((hole, index) => {
     totalYards += hole.teeBoxes[teeBox].yards
     totalPar += hole.teeBoxes[teeBox].par;
@@ -112,8 +112,7 @@ function inputScore(playerId, elementId, totalId, isOut, outInId) {
     console.log(players);
     for (let i = 0; i < players.length; i++) {
       if (players[i].id === playerId) {
-        if(isOut)
-        {
+        if(isOut) {
           players[i].outTotal += parseInt(playerScore);
           document.getElementById(outInId).innerText = players[i].outTotal;
         }
@@ -129,3 +128,27 @@ function inputScore(playerId, elementId, totalId, isOut, outInId) {
     document.getElementById(elementId).readOnly = true;
   }
 }
+
+function toast(playerId) {
+  var x = document.getElementById("snackbar");
+  let message = "You scored ";
+
+  for(let i = 0; i < players.length; i++)
+  {
+    if(players[i].id === playerId)
+    {
+      let scoreDiff = players[i].score - totalPar;
+      if(scoreDiff >= 0)
+      {
+        message += "+" + scoreDiff + ", better luck next time!";
+      }
+      else{
+        message += scoreDiff + ", well done!";
+      }
+      x.innerText = message;
+    }
+  }
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
